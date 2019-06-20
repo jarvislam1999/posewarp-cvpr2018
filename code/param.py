@@ -26,9 +26,9 @@ def get_general_params():
     param['n_training_iter'] = 200000
     param['test_interval'] = 500
     param['model_save_interval'] = 1000
-    param['project_dir'] = '/home/jarvislam1999/posewarp-cvpr2018'
+    param['project_dir'] = '/mnt/data/jarvislam1999/posewarp-cvpr2018'
     param['model_save_dir'] = param['project_dir'] + '/models'
-    param['data_dir'] = '/home/jarvislam1999/posewarp-cvpr2018/data'
+    param['data_dir'] = '/mnt/data/jarvislam1999/posewarp-cvpr2018/data'
     param['batch_size'] = 4
     return param
 
