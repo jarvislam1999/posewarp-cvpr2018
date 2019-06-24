@@ -29,6 +29,6 @@ def get_general_params():
     param['project_dir'] = '/mnt/data/jarvislam1999/posewarp-cvpr2018'
     param['model_save_dir'] = param['project_dir'] + '/models'
     param['data_dir'] = '/mnt/data/jarvislam1999/posewarp-cvpr2018/data'
-    param['batch_size'] = 4
+    param['batch_size'] = 1
     return param
 
