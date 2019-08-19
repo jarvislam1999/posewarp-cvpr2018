@@ -1,12 +1,14 @@
 from keras.applications.vgg19 import VGG19
 from keras.layers import AveragePooling2D, Conv2D, Input
 from keras.models import Model
+from keras.models import load_model
 
 # Our VGG implementation has the following differences from the standard vgg model:
 # 1. input size is now 256x256
 # 2. average pooling instead of max pooling to remove some grid-like artifacts during synthesis
 
 def vgg_norm():
+    
     img_input = Input(shape=(256, 256, 3))
     x1 = Conv2D(64, (3, 3), activation='relu', padding='same', name='block1_conv1')(img_input)
     x2 = Conv2D(64, (3, 3), activation='relu', padding='same', name='block1_conv2')(x1)
@@ -35,7 +37,10 @@ def vgg_norm():
     x21 = AveragePooling2D((2, 2), strides=(2, 2), name='block5_pool')(x20)
 
     model = Model(inputs=[img_input], outputs=[x1, x2, x4, x5, x7, x8, x9, x10, x12, x13, x14, x15])
-    model_orig = VGG19(weights='imagenet', input_shape=(256, 256, 3), include_top=False)
+    
+    #model_orig = VGG19(weights='imagenet', input_shape=(256, 256, 3), include_top=False)
+    model_orig = VGG19(weights= None, input_shape=(256, 256, 3), include_top=False)
+    model_orig.load_weights('vgg19_weights_tf_dim_ordering_tf_kernels_notop.h5')
 
     for i in range(len(model.layers)):
         weights = model_orig.layers[i].get_weights()

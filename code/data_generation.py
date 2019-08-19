@@ -39,7 +39,7 @@ def read_frame(vid_name, frame_num, box, x):
     img_name = os.path.join(vid_name, str(frame_num + 1) + '.jpg')
     if not os.path.isfile(img_name):
         img_name = os.path.join(vid_name, str(frame_num + 1) + '.png')
-
+    print(img_name)
     img = cv2.imread(img_name)
     joints = x[:, :, frame_num] - 1.0
     box_frame = box[frame_num, :]
